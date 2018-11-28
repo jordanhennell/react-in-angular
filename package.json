@@ -5,6 +5,7 @@
   "dependencies": {
     "@types/angular": "*",
     "@types/react": "*",
+    "@types/react-dom": "*",
     "angular": "^1",
     "angular-route": "^1.7.5",
     "ngreact": "*",

@@ -5,14 +5,15 @@
   <title>React In AngularJS</title>
 </head>
 
-<body ng-app="reactInAngular">
-  <div>Hello from HTML</div>
+<body >
+  <div id="root" ng-app="reactInAngular">
+    <div>Hello from HTML</div>
 
-  <simple-angular-component></simple-angular-component>
+    <simple-angular-component></simple-angular-component>
 
-  <react-component name="SimpleReactComponent" props="{ message: 'Hello from React' }"></react-component>
-  <simple-react-directive message="'Hello from a React directive (this message is from a prop!)'"></simple-react-directive>
-
+    <react-component name="SimpleReactComponent" props="{ message: 'Hello from React' }"></react-component>
+    <simple-react-directive message="'Hello from a React directive (this message is from a prop!)'"></simple-react-directive>
+  </div>
   <script src="./index.ts"></script>
 </body>
 
