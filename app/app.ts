@@ -1,8 +1,4 @@
-import angular = require("angular");
+import { module } from "angular";
+import "ngreact";
 
-export const AngularModule = angular.module('reactInAngular', []);
-
-angular.element(document).ready(() => {
-    if (!angular.element(document).injector())
-        angular.bootstrap(document, [AngularModule.name]);
-});
+export let AngularModule = module('reactInAngular', ['react']);

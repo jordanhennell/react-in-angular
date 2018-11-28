@@ -2,12 +2,16 @@
   "name": "react-in-angular",
   "private": true,
   "version": "0.0.0",
-  "devDependencies": {
+  "dependencies": {
     "@types/angular": "*",
+    "@types/react": "*",
     "angular": "^1",
     "angular-route": "^1.7.5",
-    "typescript": "*",
-    "parcel-bundler": "*"
+    "ngreact": "*",
+    "parcel-bundler": "*",
+    "react": "*",
+    "react-dom": "*",
+    "typescript": "*"
   },
   "scripts": {
     "start": "parcel ./app/index.html --open",
