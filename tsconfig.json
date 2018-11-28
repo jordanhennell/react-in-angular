@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es6",
+        "lib": [
+            "es6",
+            "es2016.array.include",
+            "dom"
+        ],
+        "jsx": "react",
+        "inlineSources": true,
+        "inlineSourceMap": true,
+        "skipDefaultLibCheck": true,
+        "strict": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
