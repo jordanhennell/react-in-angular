@@ -1,23 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="reactInAngular">
 
 <head>
   <title>My AngularJS App</title>
 </head>
 
 <body>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
+  <angular-component />
+  
+  <script src="./app.js"></script>
+  <script src="./angularComponent.js"></script>
 </body>
 
 </html>

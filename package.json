@@ -3,15 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "dependencies": {
-    "angular": "^1.7.5",
+    "angular": "^1",
     "angular-route": "^1.7.5"
   },
   "devDependencies": {
-    "cpx": "^1.5.0",
-    "http-server": "^0.11.1"
+    "parcel-bundler": "*"
   },
   "scripts": {
-    "copy-libs": "cpx \"node_modules/{angular,angular-*}/**/*\" app/lib -C",
-    "start": "http-server -a localhost -p 8000 -c-1 ./app"
+    "dev": "parcel ./app/index.html",
+    "build": "parcel build ./app/index.html"
   }
 }
