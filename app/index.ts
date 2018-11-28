@@ -1,4 +1,4 @@
 import "./app";
-import "./angularComponent";
-import "./reactComponent";
-import "./reactDirective";
+import "./Angular/SimpleAngularComponent";
+import "./React/SimpleReactComponent";
+import "./React/SimpleReactDirective";
