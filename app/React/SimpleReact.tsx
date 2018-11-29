@@ -1,7 +1,8 @@
 import React = require("react");
-import { AngularModule } from "../app";
+import { NgReact } from "./Decorators";
 
-export class SimpleReactComponent extends React.Component<{ message: string }> {
+@NgReact
+export class SimpleReact extends React.Component<{ message: string }> {
     static defaultProps = { 
         message: "Hello from React (default)"
     }
@@ -10,5 +11,3 @@ export class SimpleReactComponent extends React.Component<{ message: string }> {
         return <div>{this.props.message}</div>;
     }
 }
-
-AngularModule.value("SimpleReactComponent", SimpleReactComponent);

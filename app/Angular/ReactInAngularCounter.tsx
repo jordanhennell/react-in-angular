@@ -1,5 +1,6 @@
 import { AngularModule } from "../app";
 import React = require("react");
+import { NgReact } from "../React/Decorators";
 
 class CounterController implements ng.IComponentController {
     public count = 0;
@@ -13,7 +14,7 @@ class CounterController implements ng.IComponentController {
     }
 }
 
-class CounterAngularComponent implements ng.IComponentOptions {
+class CounterAngular implements ng.IComponentOptions {
     template = `<div>
         <h4>React Sharing Angular Data</h4>
         <div>Angular Count: {{$ctrl.count}}</div>
@@ -24,11 +25,11 @@ class CounterAngularComponent implements ng.IComponentOptions {
     controller = CounterController;
 }
 
-class CounterReactComponent extends React.Component<{ count: number }> {
+@NgReact
+class CounterReact extends React.Component<{ count: number }> {
     render() {
         return <div>React Count: {this.props.count}</div>
     }
 }
 
-AngularModule.directive("counterReact", reactDirective => reactDirective(CounterReactComponent));
-AngularModule.component("counterAngular", new CounterAngularComponent());
+AngularModule.component("counterAngular", new CounterAngular());

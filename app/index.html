@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-
+  
 <head>
   <title>React In AngularJS</title>
 </head>
 
 <body ng-app="reactInAngular">
-
+  
   <h3>Simple Examples Inside Angular</h3>
   <div>Hello from HTML</div>
-  <simple-angular-component></simple-angular-component>
-  <react-component name="SimpleReactComponent" props="{ message: 'Hello from React' }"></react-component>
-  <simple-react-directive message="'Hello from a React directive (this message is from a prop!)'"></simple-react-directive>
+  <simple-angular></simple-angular>
+  <react-component name="SimpleReact" props="{ message: 'Hello from React' }"></react-component>
+  <simple-react message="'Hello from a React directive (this message is from a prop!)'"></simple-react>
 
   <h3>More Complex</h3>
   <counter-angular></counter-angular>
   <add-two-numbers-react first="123" second="456"></add-two-numbers-react>
 
   <script src="./index.ts"></script>
+
 </body>
 
 </html>

@@ -1,7 +1,9 @@
 import { AngularModule } from "../app";
 import { AngularWrapper } from "./Helpers";
 import React = require("react");
+import { NgReact } from "./Decorators";
 
+@NgReact
 class AddTwoNumbersReact extends React.Component<{ first: number, second: number }> {
     render() {
         let { first, second } = this.props;
@@ -26,4 +28,3 @@ class AddTwoNumbersAngular implements ng.IComponentOptions {
 }
 
 AngularModule.component("addTwoNumbersAngular", new AddTwoNumbersAngular());
-AngularModule.directive("addTwoNumbersReact", reactDirective => reactDirective(AddTwoNumbersReact));

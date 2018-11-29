@@ -9,4 +9,4 @@ class SimpleAngularComponent implements ng.IComponentOptions {
     controller = SimpleAngularController;
 }
 
-AngularModule.component("simpleAngularComponent", new SimpleAngularComponent());
+AngularModule.component("simpleAngular", new SimpleAngularComponent());
