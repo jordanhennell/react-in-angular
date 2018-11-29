@@ -3,6 +3,6 @@
 export * from "./app";
 export * from "./Angular/SimpleAngularComponent";
 export * from "./Angular/ReactInAngularCounter";
-export * from "./React/DiceRoll";
+export * from "./React/AngularInReactAddition";
 export * from "./React/SimpleReactComponent";
 export * from "./React/SimpleReactDirective";
