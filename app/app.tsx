@@ -1,14 +1,14 @@
-import { module } from "angular";
+import { bootstrap, module } from "angular";
 import "ngreact";
 import * as ReactDOM from 'react-dom';
 import React = require("react");
 
-export let AngularModule = module('reactInAngular', ['react']);
+export const AngularModule = module('reactInAngular', ['react']);
 
-let root = document.getElementById("root")!;
+const rootEl = document.getElementById("root")!;
 
 ReactDOM.render(<>
-    <div dangerouslySetInnerHTML={ {  __html: root.innerHTML} } />
-    <h3>Outside of Angular</h3>
+    <div dangerouslySetInnerHTML={{ __html: rootEl.innerHTML }} />
+    <h4>Outside Angular</h4>
     <div>Hello from React from outside Angular</div>
-</>, root);
+</>, rootEl, () => setTimeout(() => bootstrap(rootEl, ['reactInAngular']), 0));
