@@ -1,19 +1,11 @@
 import { GlobalContext } from "../app";
 import React = require("react");
 
-export class InjectionHelper extends React.Component<{ children($injector: ng.auto.IInjectorService): React.ReactNode }> {
-    render() {
-        return <GlobalContext.Consumer>
-            {context => this.props.children(context.$injector)}
-        </GlobalContext.Consumer>
-    }
-}
-
 export class AngularWrapper extends React.Component<{ children: string }> {
     render() {
-        return <InjectionHelper>
-            {$injector => <AngularWrapperInner html={this.props.children} $injector={$injector} />}
-        </InjectionHelper>
+        return <GlobalContext.Consumer>
+            {context => <AngularWrapperInner html={this.props.children} $injector={context.$injector} />}
+            </GlobalContext.Consumer>
     }
 }
 
@@ -34,9 +26,7 @@ class AngularWrapperInner extends React.Component<{ html: string, $injector: ng.
 
         var compiled = compile(this.props.html)(this.createIsolatedScope());
 
-        timeout(() =>
-            this.angularRef!.innerHTML = compiled.html(),
-            0);
+        timeout(() => this.angularRef!.innerHTML = compiled.html(), 0);
     }
 
     private createIsolatedScope() {

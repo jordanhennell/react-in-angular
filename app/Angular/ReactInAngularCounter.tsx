@@ -1,6 +1,6 @@
 import { AngularModule } from "../app";
 import React = require("react");
-import { NgReact } from "../React/Decorators";
+import { NgReact } from "../React/NgReactDecorator";
 
 class CounterController implements ng.IComponentController {
     public count = 0;

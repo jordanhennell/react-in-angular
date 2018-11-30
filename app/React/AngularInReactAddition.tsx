@@ -1,7 +1,7 @@
 import { AngularModule } from "../app";
-import { AngularWrapper } from "./Helpers";
+import { AngularWrapper } from "./AngularWrapper";
 import React = require("react");
-import { NgReact } from "./Decorators";
+import { NgReact } from "./NgReactDecorator";
 
 @NgReact
 class AddTwoNumbersReact extends React.Component<{ first: number, second: number }> {

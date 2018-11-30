@@ -1,5 +1,5 @@
 import React = require("react");
-import { NgReact } from "./Decorators";
+import { NgReact } from "./NgReactDecorator";
 
 @NgReact
 export class SimpleReact extends React.Component<{ message: string }> {

@@ -1,19 +1,9 @@
 import React = require("react");
-import { AngularModule } from "../app";
+import { NgReact } from "../React/NgReactDecorator";
 import { ProfileService } from "./ProfileService";
-import { InjectionHelper } from "../React/Helpers";
-import { NgReact } from "../React/Decorators";
 
-@NgReact
-export class ViewProfile extends React.Component {    
-    render() {
-        return <InjectionHelper>
-            {context => <ViewProfileInner service={context.get<ProfileService>(ProfileService.name)} />}
-        </InjectionHelper>
-    }
-}
-
-class ViewProfileInner extends React.Component<{ service: ProfileService }> {
+@NgReact([ProfileService])
+export class ViewProfile extends React.Component<{ ProfileService: ProfileService }> {    
     componentDidMount() {
         this.service.getPosts().then(p => console.log("Posts", p));
         this.service.getComments().then(c => console.log("Comments", c));
@@ -24,7 +14,5 @@ class ViewProfileInner extends React.Component<{ service: ProfileService }> {
         return <i>Profile data to go here</i>;
     }
 
-    private get service() { return this.props.service; }
+    private get service() { return this.props.ProfileService; }
 }
-
-AngularModule.directive("viewDatabase", reactDirective => reactDirective(ViewProfile));
