@@ -1,21 +1,5 @@
 import { AngularModule } from "../app";
 
-interface IPost {
-    id: number,
-    title: string,
-    author: string
-}
-
-interface IComment {
-    id: number,
-    body: string,
-    postId: number
-}
-
-interface IProfile {
-    name: string
-}
-
 const serverUri = "http://localhost:3000";
 
 export class ProfileService {
@@ -28,7 +12,7 @@ export class ProfileService {
     }
 
     getProfile() {
-        return this.fetch<IProfile[]>("/profile");
+        return this.fetch<IProfile>("/profile");
     }
 
     private async fetch<T>(path: string) {
@@ -36,5 +20,20 @@ export class ProfileService {
         return JSON.parse(await response.text()) as T;
     }
 }
-
 AngularModule.service(ProfileService.name, ProfileService);
+
+export interface IPost {
+    id: number,
+    title: string,
+    author: string
+}
+
+export interface IComment {
+    id: number,
+    body: string,
+    postId: number
+}
+
+export interface IProfile {
+    name: string
+}

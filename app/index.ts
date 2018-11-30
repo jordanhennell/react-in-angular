@@ -7,5 +7,6 @@ export * from "./React/AngularInReactAddition";
 export * from "./React/SimpleReact";
 export * from "./React/AngularWrapper";
 export * from "./React/NgReactDecorator";
+export * from "./StateManagement/ProfileModel";
 export * from "./StateManagement/ProfileService";
 export * from "./StateManagement/ViewProfile";
