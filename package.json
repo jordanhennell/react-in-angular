@@ -8,6 +8,8 @@
     "@types/react-dom": "*",
     "angular": "^1",
     "angular-route": "^1.7.5",
+    "event-reduce": "*",
+    "json-server": "*",
     "ngreact": "*",
     "parcel-bundler": "*",
     "react": "*",
@@ -15,7 +17,12 @@
     "typescript": "*"
   },
   "scripts": {
-    "start": "parcel ./app/index.html --open",
+    "parcel": "parcel ./app/index.html --open",
+    "json-server": "json-server --watch ./app/db.json",
+    "start": "json-server --watch ./app/db.json | parcel ./app/index.html --open",
     "build": "parcel build ./app/index.html"
-  }
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
 }

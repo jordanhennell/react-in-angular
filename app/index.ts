@@ -5,3 +5,4 @@ export * from "./Angular/SimpleAngular";
 export * from "./Angular/ReactInAngularCounter";
 export * from "./React/AngularInReactAddition";
 export * from "./React/SimpleReact";
+export * from "./StateManagement/ViewProfile";

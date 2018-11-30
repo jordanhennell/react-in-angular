@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "first post",
+      "author": "jordan"
+    },
+    {
+      "title": "second post",
+      "author": "jordan",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "body": "another comment",
+      "postId": 1,
+      "id": 2
+    },
+    {
+      "body": "comment on second post",
+      "postId": 2,
+      "id": 3
+    }
+  ],
+  "profile": {
+    "name": "jordan"
+  }
+}
