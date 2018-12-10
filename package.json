@@ -20,7 +20,7 @@
   "scripts": {
     "parcel": "parcel ./app/index.html --open",
     "json-server": "json-server --watch ./app/db.json",
-    "start": "json-server --watch ./app/db.json | parcel ./app/index.html --open",
+    "start": "parcel ./app/index.html --open",
     "build": "parcel build ./app/index.html"
   },
   "browserslist": [

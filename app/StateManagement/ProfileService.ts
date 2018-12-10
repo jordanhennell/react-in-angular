@@ -12,7 +12,8 @@ export class ProfileService {
     }
 
     getProfile() {
-        return this.fetch<IProfile>("/profile");
+        return this.fetch<IProfile>("/profile")
+            .then(p => new Promise<IProfile>(resolve => setTimeout(() => resolve(p), 5000))); // delay for testing
     }
 
     private async fetch<T>(path: string) {

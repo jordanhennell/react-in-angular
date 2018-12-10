@@ -22,8 +22,8 @@ class AddTwoNumbersReact extends React.Component<{ first: number, second: number
 class AddTwoNumbersAngular implements ng.IComponentOptions {
     template = "Angular result: {{ $ctrl.first + $ctrl.second }}";
     bindings = {
-        first: "=",
-        second: "="
+        first: "<",
+        second: "<"
     }
 }
 

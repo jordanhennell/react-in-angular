@@ -1,37 +1,56 @@
+import { observer } from "mobx-react";
 import { GlobalContext } from "../app";
 import React = require("react");
 
+@observer
 export class AngularWrapper extends React.Component<{ children: string }> {
     render() {
         return <GlobalContext.Consumer>
-            {context => <AngularWrapperInner html={this.props.children} $injector={context.$injector} />}
-            </GlobalContext.Consumer>
+            {context => <AngularWrapperInner
+                html={this.props.children}
+                $injector={context.$injector} />}
+        </GlobalContext.Consumer>
     }
 }
 
-class AngularWrapperInner extends React.Component<{ html: string, $injector: ng.auto.IInjectorService }> {
-    private angularRef: null | HTMLDivElement = null;
+interface IAngularWrapperInnerProps {
+    html: string,
+    $injector: ng.auto.IInjectorService
+}
+
+@observer
+class AngularWrapperInner extends React.Component<IAngularWrapperInnerProps> {
+    private inner: Element | null = null;
+    private scope: ng.IScope | undefined;
+
+    constructor(props: IAngularWrapperInnerProps) {
+        super(props);
+    }
 
     componentDidMount() {
-        this.updateAngularHtml();
+        this.compileAngular();
+    }
+
+    componentDidUpdate() {
+        this.$timeout(() => this.compileAngular(), 0);
     }
 
     render() {
-        return <div ref={r => this.angularRef = r} />;
+        return <div ref={e => this.inner = e} dangerouslySetInnerHTML={{ __html: this.props.html }} />
     }
 
-    private updateAngularHtml() {
-        var compile = this.$injector.get("$compile");
-        var timeout = this.$injector.get("$timeout");
-
-        var compiled = compile(this.props.html)(this.createIsolatedScope());
-
-        timeout(() => this.angularRef!.innerHTML = compiled.html(), 0);
+    private compileAngular() {
+        this.updateScope();
+        this.$compile(this.inner!)(this.scope!);
     }
 
-    private createIsolatedScope() {
-        return this.$injector.get("$rootScope").$new(true);
+    private updateScope() {
+        this.scope && this.scope!.$destroy();
+        this.scope = this.$rootScope.$new();
     }
 
+    private get $timeout() { return this.$injector.get("$timeout"); }
+    private get $compile() { return this.$injector.get("$compile"); }
+    private get $rootScope() { return this.$injector.get("$rootScope"); }
     private get $injector() { return this.props.$injector; }
 }
