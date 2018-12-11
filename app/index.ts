@@ -9,4 +9,4 @@ export * from "./React/AngularWrapper";
 export * from "./React/NgReactDecorator";
 export * from "./StateManagement/ProfileModel";
 export * from "./StateManagement/ProfileService";
-export * from "./StateManagement/ViewProfile";
+export * from "./StateManagement/ViewProfileReact";

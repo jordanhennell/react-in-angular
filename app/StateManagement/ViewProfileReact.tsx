@@ -1,14 +1,14 @@
 import React = require("react");
 import { observer } from "mobx-react";
+import { Component } from "../Angular/AngularDecorators";
+import { AngularWrapper } from "../React/AngularWrapper";
 import { NgReact } from "../React/NgReactDecorator";
 import { ProfileModel } from "./ProfileModel";
 import { ProfileService } from "./ProfileService";
-import { AngularWrapper } from "../React/AngularWrapper";
-import { AngularModule } from "../app";
 
 @observer
 @NgReact([ProfileService, ProfileModel])
-export class ViewProfile extends React.Component<{ ProfileService: ProfileService, ProfileModel: ProfileModel }> {
+class ViewProfileReact extends React.Component<{ ProfileService: ProfileService, ProfileModel: ProfileModel }> {
     componentDidMount() {
         this.model.events.postsLoaded(this.service.getPosts());
         this.model.events.commentsLoaded(this.service.getComments());
@@ -17,7 +17,7 @@ export class ViewProfile extends React.Component<{ ProfileService: ProfileServic
 
     render() {
         return <>
-            <h4>Using event-reduce and MobX</h4>
+            <h4>React using event-reduce and MobX</h4>
             <div>Posts: {JSON.stringify(this.model.posts)}</div>
             <div>Comments: {JSON.stringify(this.model.comments)}</div>
             <div>Profile: {JSON.stringify(this.model.profile)}</div>
@@ -32,11 +32,10 @@ export class ViewProfile extends React.Component<{ ProfileService: ProfileServic
     private get model() { return this.props.ProfileModel; }
 }
 
-export class AngularIsDoneComponent implements ng.IComponentOptions {
-    template = "<div>Angular says loading is {{ !$ctrl.isDone ? 'not ' : '' }}done</div>";
-    bindings = {
+@Component("angularIsDone", {
+    template: "<div>Angular says loading is {{ !$ctrl.isDone ? 'not ' : '' }}done</div>",
+    bindings: {
         isDone: "<"
-    };
-}
-
-AngularModule.component("angularIsDone", new AngularIsDoneComponent());
+    }
+})
+class AngularIsDone implements ng.IComponentController { }

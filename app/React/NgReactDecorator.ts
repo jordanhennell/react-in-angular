@@ -1,12 +1,12 @@
 import { AngularModule } from "../app";
+import { angularFriendlyName, Constructor } from "../utils";
 
-type Constructor<T> = Function & { new(...args: any[]): T }
-type ReactComponentConstructor = Constructor<React.Component>;
+type ReactComponentConstructor = Constructor<React.Component> & Function;
 
 export function NgReact<T extends ReactComponentConstructor>(ctor: T): T
 export function NgReact<T extends ReactComponentConstructor>(injections: string[]): T
 export function NgReact<T extends ReactComponentConstructor>(injections: Constructor<any>[]): T
-export function NgReact<T extends ReactComponentConstructor>(ctorOrInjections: string[] | T) {
+export function NgReact<T extends ReactComponentConstructor>(ctorOrInjections: T | string[] | Constructor<any>[]) {
     return ctorOrInjections instanceof Array
         ? registerWithInjections<T>(ctorOrInjections)
         : registerWithoutInjections<T>(ctorOrInjections);
@@ -17,8 +17,8 @@ function registerWithInjections<T extends ReactComponentConstructor>(injections:
         ? injections.map(c => c.name)
         : injections;
 
-    return (ctor: T & { test: string }) => {
-        AngularModule.directive(getAngularFriendlyName(ctor.name), (reactDirective, $injector: ng.auto.IInjectorService) => {
+    return (ctor: T) => {
+        AngularModule.directive(angularFriendlyName(ctor), (reactDirective, $injector: ng.auto.IInjectorService) => {
             let injectionProps = injectionNames.reduce((prev, current) => ({ ...prev, [current]: $injector.get(current) }), new Object());
             return reactDirective(ctor, undefined, {}, injectionProps);
         });
@@ -31,13 +31,9 @@ function registerWithInjections<T extends ReactComponentConstructor>(injections:
 }
 
 function registerWithoutInjections<T extends ReactComponentConstructor>(ctor: T) {
-    AngularModule.directive(getAngularFriendlyName(ctor.name), reactDirective => reactDirective(ctor));
+    AngularModule.directive(angularFriendlyName(ctor), reactDirective => reactDirective(ctor));
     registerValue(ctor);
     return ctor;
-}
-
-function getAngularFriendlyName(name: string) {
-    return name.charAt(0).toLowerCase() + name.slice(1);
 }
 
 function registerValue<T extends ReactComponentConstructor>(ctor: T) {

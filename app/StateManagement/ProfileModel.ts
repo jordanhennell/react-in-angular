@@ -1,5 +1,5 @@
 import { event, events, reduce, reduced } from "event-reduce";
-import { AngularModule } from "../app";
+import { Service } from "../Angular/AngularDecorators";
 import { IComment, IPost, IProfile } from "./ProfileService";
 
 @events
@@ -9,6 +9,7 @@ class ProfileEvents {
     profileLoaded = event<Promise<IProfile>>();
 }
 
+@Service
 export class ProfileModel {
     events = new ProfileEvents();
 
@@ -49,5 +50,3 @@ export class ProfileModel {
         .on(e => e.profileLoaded.resolved(), () => true)
         .value;
 }
-
-AngularModule.service(ProfileModel.name, ProfileModel);

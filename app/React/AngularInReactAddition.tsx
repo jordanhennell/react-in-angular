@@ -1,7 +1,7 @@
-import { AngularModule } from "../app";
+import { Component } from "../Angular/AngularDecorators";
 import { AngularWrapper } from "./AngularWrapper";
-import React = require("react");
 import { NgReact } from "./NgReactDecorator";
+import React = require("react");
 
 @NgReact
 class AddTwoNumbersReact extends React.Component<{ first: number, second: number }> {
@@ -19,12 +19,11 @@ class AddTwoNumbersReact extends React.Component<{ first: number, second: number
     }
 }
 
-class AddTwoNumbersAngular implements ng.IComponentOptions {
-    template = "Angular result: {{ $ctrl.first + $ctrl.second }}";
-    bindings = {
+@Component("addTwoNumbersAngular", {
+    template: "Angular result: {{ $ctrl.first + $ctrl.second }}",
+    bindings: {
         first: "<",
         second: "<"
     }
-}
-
-AngularModule.component("addTwoNumbersAngular", new AddTwoNumbersAngular());
+})
+class AddTwoNumbersAngular implements ng.IComponentController { }

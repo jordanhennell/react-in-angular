@@ -1,12 +1,8 @@
-import { AngularModule } from "../app";
+import { Component } from "./AngularDecorators";
 
+@Component("simpleAngular", {
+    template: "<div>{{$ctrl.message}}</div>"
+})
 class SimpleAngularController implements ng.IComponentController {
     public message = "Hello from Angular"
 }
-
-class SimpleAngularComponent implements ng.IComponentOptions {
-    template = "<div>{{$ctrl.message}}</div>";
-    controller = SimpleAngularController;
-}
-
-AngularModule.component("simpleAngular", new SimpleAngularComponent());

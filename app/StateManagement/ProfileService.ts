@@ -1,7 +1,8 @@
-import { AngularModule } from "../app";
+import { Service } from "../Angular/AngularDecorators";
 
 const serverUri = "http://localhost:3000";
 
+@Service
 export class ProfileService {
     getPosts() {
         return this.fetch<IPost[]>("/posts");
@@ -21,7 +22,6 @@ export class ProfileService {
         return JSON.parse(await response.text()) as T;
     }
 }
-AngularModule.service(ProfileService.name, ProfileService);
 
 export interface IPost {
     id: number,
