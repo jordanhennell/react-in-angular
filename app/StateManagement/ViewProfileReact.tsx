@@ -21,7 +21,7 @@ class ViewProfileReact extends React.Component<{ ProfileService: ProfileService,
             <div>Posts: {JSON.stringify(this.model.posts)}</div>
             <div>Comments: {JSON.stringify(this.model.comments)}</div>
             <div>Profile: {JSON.stringify(this.model.profile)}</div>
-            <div>React says loading is {!this.model.loadingComplete && "not "}done</div>
+            <ReactIsDone isDone={this.model.loadingComplete} />
             <AngularWrapper>{
                 `<angular-is-done is-done="${this.model.loadingComplete}"></angular-is-done>`
             }</AngularWrapper>
@@ -30,6 +30,13 @@ class ViewProfileReact extends React.Component<{ ProfileService: ProfileService,
 
     private get service() { return this.props.ProfileService; }
     private get model() { return this.props.ProfileModel; }
+}
+
+@NgReact
+class ReactIsDone extends React.Component<{ isDone: boolean }> {
+    render() {
+        return <div>React says loading is {!this.props.isDone && "not "}done</div>
+    }
 }
 
 @Component("angularIsDone", {

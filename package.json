@@ -10,6 +10,7 @@
     "angular-route": "^1.7.5",
     "event-reduce": "*",
     "json-server": "*",
+    "mobx-angularjs": "*",
     "mobx-react": "*",
     "ngreact": "*",
     "parcel-bundler": "*",
