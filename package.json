@@ -19,10 +19,10 @@
     "typescript": "*"
   },
   "scripts": {
-    "parcel": "parcel ./app/index.html --open",
-    "json-server": "json-server --watch ./app/db.json",
-    "start": "parcel ./app/index.html --open",
-    "build": "parcel build ./app/index.html"
+    "parcel": "parcel ./src/index.html --open",
+    "json-server": "json-server --watch ./src/db.json",
+    "start": "parcel ./src/index.html --open",
+    "build": "parcel build ./src/index.html"
   },
   "browserslist": [
     "last 1 Chrome version"
