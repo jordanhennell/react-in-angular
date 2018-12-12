@@ -25,6 +25,7 @@ class ViewProfileReact extends React.Component<{ ProfileService: ProfileService,
             <AngularWrapper>{
                 `<angular-is-done is-done="${this.model.loadingComplete}"></angular-is-done>`
             }</AngularWrapper>
+            Toggled: <input type="checkbox" checked={this.model.isChecked} onChange={this.model.events.toggleChecked} />
         </>;
     }
 

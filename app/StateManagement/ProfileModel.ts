@@ -7,6 +7,7 @@ class ProfileEvents {
     postsLoaded = event<Promise<IPost[]>>();
     commentsLoaded = event<Promise<IComment[]>>();
     profileLoaded = event<Promise<IProfile>>();
+    toggleChecked = event();
 }
 
 @Service
@@ -48,5 +49,10 @@ export class ProfileModel {
     @reduced
     private profileLoaded = reduce(false, this.events)
         .on(e => e.profileLoaded.resolved(), () => true)
+        .value;
+
+    @reduced
+    isChecked = reduce(false, this.events)
+        .on(e => e.toggleChecked, t => !t)
         .value;
 }

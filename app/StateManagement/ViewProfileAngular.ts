@@ -9,6 +9,7 @@ import { ProfileModel } from "./ProfileModel";
         <div>Profile: {{$ctrl.model.profile | json }}</div>
         <div>Angular says loading is {{ !$ctrl.model.loadingComplete ? 'not ' : '' }}done</div>
         <react-is-done is-done="$ctrl.model.loadingComplete"></react-is-done>
+        Toggled: <input type="checkbox" ng-checked="$ctrl.model.isChecked" ng-click="$ctrl.model.events.toggleChecked()" />
     </div>`
 })
 class ViewProfileAngularController implements ng.IComponentController {
