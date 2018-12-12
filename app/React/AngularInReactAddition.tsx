@@ -4,12 +4,25 @@ import { NgReact } from "./NgReactDecorator";
 import React = require("react");
 
 @NgReact
-class AddTwoNumbersReact extends React.Component<{ first: number, second: number }> {
+class AddTwoNumbersReact extends React.Component<{}, { first: number, second: number }> {
+    constructor(props: {}) {
+        super(props);
+        this.state = { first: 2, second: 2 };
+    }
+    
     render() {
-        let { first, second } = this.props;
+        let { first, second } = this.state;
 
         return <>
             <h4>Angular Inside React</h4>
+            <div><label>
+                First
+                <input type="number" value={first} onChange={e => this.setState({ first: parseFloat(e.target.value) })} />
+            </label></div>
+            <div><label>
+                Second
+                <input type="number" value={second} onChange={e => this.setState({ second: parseFloat(e.target.value) })} />
+            </label></div>
             <div>{first} + {second} = ...</div>
             <div>React result: {first + second}</div>
             <AngularWrapper>{

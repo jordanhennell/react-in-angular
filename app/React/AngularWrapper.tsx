@@ -20,7 +20,7 @@ interface IAngularWrapperInnerProps {
 
 @observer
 class AngularWrapperInner extends React.Component<IAngularWrapperInnerProps> {
-    private inner: Element | null = null;
+    private rootElement: Element | null = null;
     private scope: ng.IScope | undefined;
 
     constructor(props: IAngularWrapperInnerProps) {
@@ -32,24 +32,24 @@ class AngularWrapperInner extends React.Component<IAngularWrapperInnerProps> {
     }
 
     componentDidUpdate() {
-        this.$timeout(() => this.compileAngular(), 0);
+        this.compileAngular();
+        this.scope!.$apply();
     }
 
     render() {
-        return <div ref={e => this.inner = e} dangerouslySetInnerHTML={{ __html: this.props.html }} />
+        return <div ref={e => this.rootElement = e} dangerouslySetInnerHTML={{ __html: this.props.html }} />
     }
 
     private compileAngular() {
-        this.updateScope();
-        this.$compile(this.inner!)(this.scope!);
+        this.resetScope();
+        this.$compile(this.rootElement!)(this.scope!);
     }
 
-    private updateScope() {
+    private resetScope() {
         this.scope && this.scope!.$destroy();
         this.scope = this.$rootScope.$new();
     }
 
-    private get $timeout() { return this.$injector.get("$timeout"); }
     private get $compile() { return this.$injector.get("$compile"); }
     private get $rootScope() { return this.$injector.get("$rootScope"); }
     private get $injector() { return this.props.$injector; }

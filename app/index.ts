@@ -4,6 +4,7 @@ export * from "./app";
 export * from "./Angular/SimpleAngular";
 export * from "./Angular/ReactInAngularCounter";
 export * from "./React/AngularInReactAddition";
+export * from "./React/ReactInAngularInReact";
 export * from "./React/SimpleReact";
 export * from "./React/AngularWrapper";
 export * from "./React/NgReactDecorator";
