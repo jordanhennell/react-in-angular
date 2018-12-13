@@ -8,12 +8,9 @@
             "dom"
         ],
         "jsx": "react",
-        "inlineSources": true,
-        "inlineSourceMap": true,
-        "skipDefaultLibCheck": true,
         "strict": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "allowSyntheticDefaultImports": true
     },
     "exclude": [
         "node_modules"

@@ -8,7 +8,7 @@ import { ProfileService } from "./ProfileService";
 
 @observer
 @NgReact([ProfileService, ProfileModel])
-class ViewProfileReact extends React.Component<{ ProfileService: ProfileService, ProfileModel: ProfileModel }> {
+export class ViewProfileReact extends React.Component<{ ProfileService: ProfileService, ProfileModel: ProfileModel }> {
     componentDidMount() {
         this.model.events.postsLoaded(this.service.getPosts());
         this.model.events.commentsLoaded(this.service.getComments());
@@ -34,7 +34,7 @@ class ViewProfileReact extends React.Component<{ ProfileService: ProfileService,
 }
 
 @NgReact
-class ReactIsDone extends React.Component<{ isDone: boolean }> {
+export class ReactIsDone extends React.Component<{ isDone: boolean }> {
     render() {
         return <div>React says loading is {!this.props.isDone && "not "}done</div>
     }

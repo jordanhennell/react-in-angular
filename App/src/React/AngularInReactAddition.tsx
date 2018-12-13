@@ -4,7 +4,7 @@ import { NgReact } from "./NgReactDecorator";
 import React = require("react");
 
 @NgReact
-class AddTwoNumbersReact extends React.Component<{}, { first: number, second: number }> {
+export class AddTwoNumbersReact extends React.Component<{}, { first: number, second: number }> {
     constructor(props: {}) {
         super(props);
         this.state = { first: 2, second: 2 };

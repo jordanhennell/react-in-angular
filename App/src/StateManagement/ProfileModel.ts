@@ -3,7 +3,7 @@ import { Service } from "../Angular/AngularDecorators";
 import { IComment, IPost, IProfile } from "./ProfileService";
 
 @events
-class ProfileEvents {
+export class ProfileEvents {
     postsLoaded = event<Promise<IPost[]>>();
     commentsLoaded = event<Promise<IComment[]>>();
     profileLoaded = event<Promise<IProfile>>();

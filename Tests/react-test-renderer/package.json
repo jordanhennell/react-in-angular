@@ -1,0 +1,19 @@
+{
+  "name": "react-test-renderer",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "@types/jest": "*",
+    "@types/react-dom": "*",
+    "@types/react-test-renderer": "*",
+    "jest": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-test-renderer": "*",
+    "ts-jest": "*",
+    "typescript": "*"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
