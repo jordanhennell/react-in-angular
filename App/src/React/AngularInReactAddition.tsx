@@ -3,6 +3,11 @@ import { AngularWrapper } from "./AngularWrapper";
 import { NgReact } from "./NgReactDecorator";
 import React = require("react");
 
+export const testIds = {
+    firstInput: "firstInput",
+    secondInput: "secondInput",
+}
+
 @NgReact
 export class AddTwoNumbersReact extends React.Component<{}, { first: number, second: number }> {
     constructor(props: {}) {
@@ -17,11 +22,19 @@ export class AddTwoNumbersReact extends React.Component<{}, { first: number, sec
             <h4>Angular Inside React</h4>
             <div><label>
                 First
-                <input type="number" value={first} onChange={e => this.setState({ first: parseFloat(e.target.value) })} />
+                <input 
+                    type="number" 
+                    value={first} 
+                    onChange={e => this.setState({ first: parseFloat(e.target.value) })} 
+                    data-testid={testIds.firstInput} />
             </label></div>
             <div><label>
                 Second
-                <input type="number" value={second} onChange={e => this.setState({ second: parseFloat(e.target.value) })} />
+                <input 
+                    type="number" 
+                    value={second} 
+                    onChange={e => this.setState({ second: parseFloat(e.target.value) })} 
+                    data-testid={testIds.secondInput}/>
             </label></div>
             <div>{first} + {second} = ...</div>
             <div>React result: {first + second}</div>

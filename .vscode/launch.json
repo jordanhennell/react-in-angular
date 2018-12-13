@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run tests",
+            "program": "${workspaceFolder}/Tests/react-testing-library/node_modules/wattle/lib/cmd.js",
+            "cwd": "${workspaceFolder}/Tests/react-testing-library",
+            "args": [
+                "-m", "./TestCommon"
+            ],
+            "skipFiles": [
+                "<node_internals>/**/*.js"
+            ]
+        }
+    ]
+}

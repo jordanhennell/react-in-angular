@@ -1,0 +1,26 @@
+{
+  "name": "react-testing-library",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "@babel/polyfill": "*",
+    "@types/chai": "*",
+    "@types/react": "*",
+    "@types/sinon": "*",
+    "@types/sinon-chai": "*",
+    "chai": "*",
+    "dom-testing-library": "*",
+    "jsdom": "*",
+    "jsdom-global": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-testing-library": "*",
+    "sinon": "*",
+    "sinon-chai": "*",
+    "typescript": "*",
+    "wattle": "*"
+  },
+  "scripts": {
+    "test": "wattle -m ./TestCommon"
+  }
+}
